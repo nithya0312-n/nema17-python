@@ -16,7 +16,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 // Make sure 'MySonarQube' matches Jenkins SonarQube server name
-                withSonarQubeEnv('MySonarQube') {
+                withSonarQubeEnv('SonarQube') {
                     sh """
                         ${SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectKey=python-beginner-projects \
