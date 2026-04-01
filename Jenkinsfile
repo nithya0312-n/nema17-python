@@ -12,6 +12,7 @@ pipeline {
             steps {
                 script {
                          def scannerHome = tool 'SonarScanner'
+                         echo "Scanner path: ${scannerHome}"
                          sh "${scannerHome}/bin/sonar-scanner"
                     }
                 }
