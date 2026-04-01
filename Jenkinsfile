@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Correct place to declare SonarScanner
-        sonarScanner 'SonarScanner'
+        sonarRunner 'SonarScanner'
     }
 
     stages {
