@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/basavaraj55/Python-Projects-For-Beginners.git'
+                    url: 'https://github.com/nithya0312-n/nema17-python.git'
             }
         }
 
