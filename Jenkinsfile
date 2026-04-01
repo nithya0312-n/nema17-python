@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        sonarQubeScanner 'SonarScanner'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -14,8 +10,11 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarQubeServer') {
-                    sh "${tool 'SonarScanner'}/bin/sonar-scanner"
+                script {
+                    def scannerHome = tool 'SonarScanner'   // <-- tool name from Jenkins config
+                    withSonarQubeEnv('SonarQubeServer') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
             }
         }
