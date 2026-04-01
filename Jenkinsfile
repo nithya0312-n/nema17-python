@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    tool 'SonarScanner'
+withSonarQubeEnv('SonarQubeServer') {
+    sh "${tool 'SonarScanner'}/bin/sonar-scanner"
+}
+
     stages {
         stage('Checkout') {
             steps {
