@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    tool 'SonarScanner'
-withSonarQubeEnv('SonarQubeServer') {
-    sh "${tool 'SonarScanner'}/bin/sonar-scanner"
-}
+    tools {
+        // Correct place to declare SonarScanner
+        sonarScanner 'SonarScanner'
+    }
 
     stages {
         stage('Checkout') {
