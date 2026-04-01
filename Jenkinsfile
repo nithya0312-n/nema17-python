@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     tools {
-        // Correct place to declare SonarScanner
-        sonarRunner 'SonarScanner'
+        sonarQubeScanner 'SonarScanner'
     }
 
     stages {
