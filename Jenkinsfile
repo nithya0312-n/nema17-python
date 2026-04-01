@@ -15,7 +15,8 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarQube') {
+                // Make sure 'MySonarQube' matches Jenkins SonarQube server name
+                withSonarQubeEnv('MySonarQube') {
                     sh """
                         ${SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectKey=python-beginner-projects \
@@ -32,6 +33,7 @@ pipeline {
         stage('Quality Gate') {
             steps {
                 timeout(time: 2, unit: 'MINUTES') {
+                    // This requires a valid URL in Jenkins SonarQube config
                     waitForQualityGate abortPipeline: true
                 }
             }
