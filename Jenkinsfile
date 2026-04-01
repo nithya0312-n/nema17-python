@@ -1,7 +1,6 @@
 pipeline {
     agent any
 
-    
     stages {
         stage('Checkout') {
             steps {
@@ -12,13 +11,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
-                    sh '''
-                        sonar-scanner \
-                          -Dsonar.projectKey=nema17-python \
-                          -Dsonar.sources=. \
-                          -Dsonar.host.url=http://localhost:9000 \
-                          -Dsonar.login=<your-sonarqube-token>
-                    '''
+                    sh 'sonar-scanner'
                 }
             }
         }
